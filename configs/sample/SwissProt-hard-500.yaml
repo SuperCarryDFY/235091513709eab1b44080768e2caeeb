@@ -1,0 +1,21 @@
+# sample config
+sample:
+  test: True
+  long_text: True
+  guidance_scale: 1
+  n_samples: 5
+  temperature : 0.8
+  top_p : 1
+  top_k : 40
+  max_length : 512
+  min_length : 64
+  repetition_penalty: 1
+  num_beams: 1
+  cond: True
+  n_samples_for_spec: 100
+  saprot_path: ${oc.env:HF_MODELS_ROOT}/SaProt_650M_AF2
+
+dataset:
+  batch_size: 1
+  max_text_seq_len: 768
+  text_dataset_path_for_generation: ${oc.env:DATA_ROOT}/sprot_text/hard_test-500.tsv

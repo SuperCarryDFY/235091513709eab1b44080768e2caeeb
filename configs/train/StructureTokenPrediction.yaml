@@ -1,0 +1,18 @@
+io:
+  project_name: StructureARGenerationv2
+
+model:
+  module: StructureTokenPredictionModel
+  plm_type : gpt2
+  lm_type: T5EncoderModel
+  lm: ${oc.env:HF_MODELS_ROOT}/flan-t5-base
+  tokenizer: ${oc.env:HF_MODELS_ROOT}/structure_tokenizer
+
+training:
+  objective: next_structure_token_prediction
+  pre_defined_max_steps : 10240000
+  per_gpu_batchsize : 64
+
+dataset:
+  splits_sub_dir: "splits_SeqID50"
+  hard_val_metrics : True

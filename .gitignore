@@ -1,0 +1,10 @@
+__pycache__
+.env
+output
+wandb
+tea_debug.log
+.vscode/settings.json
+hf_models/microsoft-BiomedNLP-PubMedBERT-base-uncased-abstract
+hf_models/models--gpt2
+hf_models/SaProt_650M_AF2
+hf_models/flan-t5-base

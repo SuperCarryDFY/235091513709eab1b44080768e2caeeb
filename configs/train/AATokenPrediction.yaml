@@ -1,0 +1,19 @@
+io:
+  project_name: StructureARGenerationv2
+
+model:
+  module: AminoAcidTokenPredictionModel
+  plm_type : gpt2
+  lm_type: T5EncoderModel
+  lm: ${oc.env:HF_MODELS_ROOT}/flan-t5-base
+  tokenizer: ${oc.env:HF_MODELS_ROOT}/amino_acid_tokenizer
+
+training:
+  objective: next_token_prediction
+  pre_defined_max_steps : 10240000
+  per_gpu_batchsize : 64
+
+dataset:
+  seq_type: protein_sequence # protein_sequence, structure_aware_token, saprot_finetune_token
+  splits_sub_dir: "splits_SeqID50"
+  hard_val_metrics : True

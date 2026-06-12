@@ -1,0 +1,74 @@
+io:
+  outdir: ${oc.env:OUTPUT_ROOT}
+  project_name: ProtARGeneration
+
+GPU:
+  num_nodes : 1
+  num_gpus: 1
+
+model:
+  module: AminoAcidTokenPredictionModel
+  # LM 
+  lm: ${oc.env:HF_MODELS_ROOT}/microsoft-BiomedNLP-PubMedBERT-base-uncased-abstract
+  lm_type: BertModel
+  lm_init_from_pretrained : True
+  lm_learn_type : full  # Note: this can be full, peft, or freeze
+  max_text_seq_len : 512
+  lm_finetune_ckpt : 
+  lm_finetune_ckpt_type : pubmedbert
+  partial_on_text : 1
+  lm_hidden_size: 768
+  ## PLM
+  plm: None
+  max_aa_seq_len : 512
+  plm_type : None
+  use_cache: False
+  
+  # init and gradient checkpointing
+  supports_gradient_checkpointing: True
+
+  
+training:
+  experiment: NextTokenPrediction
+  mode: train
+  seed: 0
+  val_before_train: True
+  per_gpu_batchsize : 64
+  pre_define_batch_size : 512
+  pre_defined_max_steps : 15360000
+  pre_defined_log_every_n_steps : 5120    
+  pre_defined_val_every_n_steps: 153600  
+  pre_defined_save_every_n_steps: 2560000 # save ckpt per 5k steps
+  pre_defined_enable_top_k_steps: 0
+  max_epochs : -1
+  num_workers_per_gpu : 15
+  objective: next_token_prediction
+  trackers: ["wandb", "tensorboard"]
+
+optimization:
+  optim_type : adamw
+  learning_rate : 1e-4
+  plm_learning_rate : -1
+  lm_learning_rate : -1
+  weight_decay : 0.01
+  decay_power : cosine
+  warmup_steps : 0.1
+
+dataset:
+  datasets: ["sprot"]
+  length_info_rate: 0
+  mask_text_ratio: 0
+  hard_val_metrics : False
+  seq_type: structure_token # protein_sequence, structure_aware_token, saprot_finetune_token
+  ## SwissProt
+  sprot_dataset_dir : ${oc.env:DATA_ROOT}/sprot_text
+  sprot_data_path : ${oc.env:DATA_ROOT}/sprot_text/LMDB/swissprot_group50
+  sprot_text_data_path : ${oc.env:DATA_ROOT}/sprot_text/LMDB/meta_data_20231129
+  splits_sub_dir : splits
+  ## Text files
+  train_paraphrased_texts_path: ${oc.env:DATA_ROOT}/sprot_text/train_paraphrased_texts.json
+  test_paraphrased_texts_path: ${oc.env:DATA_ROOT}/sprot_text/test_paraphrased_texts.json
+  train_template_path: ${oc.env:DATA_ROOT}/sprot_text/train_text_template.json
+  test_template_path: ${oc.env:DATA_ROOT}/sprot_text/test_text_template.json
+  paragraph2sentence_path: ${oc.env:DATA_ROOT}/sprot_text/paragraph2sentence.json
+  structrue_aware_tokenizer: False
