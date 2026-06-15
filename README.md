@@ -29,7 +29,7 @@ westlake-repl/SaProt_650M_AF2
 
 ## Reproduce
 
-Run the full reviewer workflow from the repository root:
+Run the full workflow from the repository root:
 
 ```bash
 bash scripts/run_all.sh
