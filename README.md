@@ -1,6 +1,6 @@
-# Pinal Training Reproduction
+# aa token prediction v.s. structure token prediction
 
-This repository contains the reviewer reproduction scripts for the amino-acid and structure-token training runs.
+This repository contains the reproduction scripts for the amino-acid and structure-token training runs.
 
 ## Setup
 
