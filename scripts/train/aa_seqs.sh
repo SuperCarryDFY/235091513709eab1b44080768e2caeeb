@@ -13,7 +13,6 @@ CONDA_NAME=${CONDA_NAME:-$(conda info --base)}
 ENV_NAME=${ENV_NAME:-genesis}
 source "$CONDA_NAME/etc/profile.d/conda.sh"
 conda activate "$ENV_NAME"
-export WANDB_MODE=offline
 export NUM_NODES=1
 accelerate launch \
   --config_file accelerate_config/deepspeed.yaml\

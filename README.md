@@ -49,6 +49,14 @@ output/StructureTokenPrediction
 output/AATokenPrediction
 ```
 
+During training, train and validation next-token prediction accuracy are logged automatically with Weights & Biases and TensorBoard. You can also plot the accuracy curves from training logs:
+
+```bash
+python scripts/plot_acc_curves.py \
+  --aa-log output/AATokenPrediction/out.log \
+  --structure-log output/StructureTokenPrediction/out.log
+```
+
 Generated FASTA files are saved under:
 
 ```text
