@@ -57,6 +57,14 @@ python scripts/plot_acc_curves.py \
   --structure-log output/StructureTokenPrediction/out.log
 ```
 
+After ESMFold evaluation, you can plot the pLDDT curves:
+
+```bash
+python scripts/plot_plddt_curves.py \
+  --aa-dir output/AATokenPrediction \
+  --structure-dir output/StructureTokenPrediction
+```
+
 Generated FASTA files are saved under:
 
 ```text

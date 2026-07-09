@@ -298,6 +298,8 @@ class BaseExperiment(ABC):
             self._log.info_dic_step(log_metrics, step=self.trained_steps)
             self.accelerator.log(log_metrics, step=int(self.trained_steps / self.acumulate_grad_batches))
         
+        # save step 0 checkpoint
+        self.save_states()
         isfinish= False or self.trained_epochs == self.max_epochs
         while not isfinish:
             if getattr(self, "skipped_dataloader", None):

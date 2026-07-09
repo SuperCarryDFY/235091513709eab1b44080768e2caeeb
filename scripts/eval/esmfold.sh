@@ -13,7 +13,7 @@ ENV_NAME=${ENV_NAME:-genesis}
 source "$CONDA_NAME/etc/profile.d/conda.sh"
 conda activate "$ENV_NAME"
 cd "$PROJECT_ROOT"
-EVAL_STEPS="5000 10000 15000 20000"
+EVAL_STEPS="0 5000 10000 15000 20000"
 
 TEST_DIR=$1
 for EVAL_STEP in $EVAL_STEPS; do
