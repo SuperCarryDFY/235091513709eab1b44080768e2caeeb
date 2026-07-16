@@ -16,12 +16,6 @@ def write_sample_cond(
             f.write(">SEQUENCE_" + str(i) + "\n" + str(_s) + "\n")
     if verbose:
         print(f"Samples are saved to {output_dir}/{name}")
-        # save_path = os.path.join(output_dir, f'{name}.fasta')
-
-def perform_mask_by_prob(sample_res, log_p, mask_by_prob_value, mask_token_id=25):
-    mask_position = log_p < mask_by_prob_value
-    return sample_res.where(~mask_position, mask_token_id)
-
 
 def conditional_sample_structure_token(model, tokenizer, sample_cfg, batch, batch_idx, num_samples_per_condition=5, saprot=None, saprot_tokenizer=None, mask_by_prob_value=-1e9):
     device = next(model.plm.parameters()).device
@@ -72,7 +66,6 @@ def conditional_sample_structure_token(model, tokenizer, sample_cfg, batch, batc
         encoder_attention_mask=text_attention_mask,
         return_dict_in_generate=True
     )
-    sample_results.sequences = perform_mask_by_prob(sample_results.sequences, sample_results.log_p, mask_by_prob_value)
     to_list = lambda seq: [
         seq[i, ...].detach().cpu().numpy().tolist() for i in range(seq.shape[0])
     ]
