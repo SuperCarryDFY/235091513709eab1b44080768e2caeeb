@@ -15,7 +15,7 @@ class StructureTokenPredictionModel(ABSmodule):
         self.lm = load_text_encoder(model_config, logger=logger)
 
         # ===================== Protein Sequence Encoder With Textual Adapter ===================== #
-        plm_config = GPT2Config.from_pretrained(resolve_pretrained_path(model_config["plm_type"]), add_cross_attention=True, 
+        plm_config = GPT2Config.from_pretrained(resolve_pretrained_path(model_config["plm_type"]), vocab_size=model_config.get("vocab_size",25), add_cross_attention=True,
                     cache_dir=env_path("HF_MODELS_ROOT"), cross_attention_dim=model_config.lm_hidden_size
                     )
         self.plm = GPT2LMHeadModel(plm_config)

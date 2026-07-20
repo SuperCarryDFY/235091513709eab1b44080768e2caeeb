@@ -13,7 +13,7 @@ class AminoAcidTokenPredictionModel(nn.Module):
         self.lm = load_text_encoder(model_config, need_text_pooler=self.need_text_pooler, logger=logger)
 
         # ===================== Protein Sequence Encoder With Textual Adapter ===================== #
-        plm_config = GPT2Config.from_pretrained(resolve_pretrained_path(model_config["plm_type"]), add_cross_attention=True, 
+        plm_config = GPT2Config.from_pretrained(resolve_pretrained_path(model_config["plm_type"]), vocab_size=model_config.get("vocab_size",25), add_cross_attention=True,
                     cache_dir=env_path("HF_MODELS_ROOT")
                     )
         self.plm = GPT2LMHeadModel(plm_config)
