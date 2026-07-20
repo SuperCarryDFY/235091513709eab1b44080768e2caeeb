@@ -5,7 +5,7 @@ This repository contains the reproduction scripts for the amino-acid and structu
 ## Setup
 
 Use the same environment and dataset preparation described in `https://github.com/SuperCarryDFY/b097bade29ef6c984ea1c6f28ec5ece165c3765a459f16085d618a97f9a60286#installation`.
-For dataset preparation, downloading `datasets_mini` from the download section is sufficient.
+For dataset preparation, downloading [datasets_mini](https://pinal.westlake.edu.cn/datasets_mini.tar) from the download section is sufficient.
 
 Before running the scripts, create `.env` in this repository and set the local paths:
 
@@ -13,7 +13,7 @@ Before running the scripts, create `.env` in this repository and set the local p
 PROJECT_ROOT=/path/to/this/repo
 DATA_ROOT=/path/to/datasets
 HF_MODELS_ROOT=hf_models
-CACHE_ROOT=/path/to/cache
+CACHE_ROOT=/path/to/cache # path to save ESMFold model weight
 OUTPUT_ROOT=${PROJECT_ROOT}/output
 CONDA_NAME=~/miniconda3
 ENV_NAME=pinal
