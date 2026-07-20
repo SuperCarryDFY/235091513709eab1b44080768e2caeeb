@@ -1,18 +1,27 @@
 import json
 import random
 from transformers import AutoTokenizer, T5Tokenizer
+from utils.path_utils import hf_cache_dir, resolve_pretrained_path
 
 
 def get_pretrained_tokenizer(from_pretrained, model_type="BertModel"):
     if from_pretrained:
+        from_pretrained = resolve_pretrained_path(from_pretrained)
         if model_type == "BertModel":
-            return AutoTokenizer.from_pretrained(from_pretrained)
+            return AutoTokenizer.from_pretrained(
+                from_pretrained,
+                cache_dir=hf_cache_dir(),
+            )
         elif model_type == "T5EncoderModel":
-            return T5Tokenizer.from_pretrained(from_pretrained)
+            return T5Tokenizer.from_pretrained(
+                from_pretrained,
+                cache_dir=hf_cache_dir(),
+            )
         else:
             raise NotImplementedError
     else:
         return None
+
 
 def extract_texts(data_dict: dict):
     uniprot_id = data_dict["primaryAccession"]
