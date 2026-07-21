@@ -31,7 +31,7 @@ westlake-repl/SaProt_650M_AF2
 
 ### Download precomputed results
 
-The complete precomputed outputs (~38 GiB), including checkpoints, generated sequences, and ESMFold results, can also be downloaded and extracted from the repository root:
+To inspect the results without reproducing the experiments locally, download the complete precomputed outputs (~38 GiB), including checkpoints, generated sequences, and ESMFold results, and extract the archive from the repository root:
 
 ```bash
 wget https://pinal.westlake.edu.cn/pinal_preliminary_output_full.tar
