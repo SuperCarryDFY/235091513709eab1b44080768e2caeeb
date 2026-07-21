@@ -29,6 +29,8 @@ westlake-repl/SaProt_650M_AF2
 
 ## Reproduce
 
+> The validation curves reported in Fig. 1b were evaluated on `splits_SeqID50/hard_val.tsv`. Proteins in this hard validation set share less than 30% sequence identity with every protein in the training set. 
+
 Run the full workflow from the repository root:
 
 ```bash
