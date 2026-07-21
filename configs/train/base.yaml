@@ -22,6 +22,7 @@ model:
   plm: None
   max_aa_seq_len : 512
   plm_type : None
+  vocab_size: 25
   use_cache: False
   
   # init and gradient checkpointing

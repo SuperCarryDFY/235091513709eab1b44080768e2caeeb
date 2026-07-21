@@ -22,7 +22,7 @@ ENV_NAME=pinal
 The code downloads standard HuggingFace models to `HF_MODELS_ROOT` when they are not found locally:
 
 ```text
-google/flan-t5-base
+google/t5-v1_1-base
 gpt2
 westlake-repl/SaProt_650M_AF2
 ```

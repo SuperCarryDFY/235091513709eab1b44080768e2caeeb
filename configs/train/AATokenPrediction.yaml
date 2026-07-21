@@ -1,11 +1,11 @@
 io:
-  project_name: StructureARGenerationv2
+  project_name: pinal_preliminary
 
 model:
   module: AminoAcidTokenPredictionModel
   plm_type : gpt2
   lm_type: T5EncoderModel
-  lm: ${oc.env:HF_MODELS_ROOT}/flan-t5-base
+  lm: ${oc.env:HF_MODELS_ROOT}/t5-v1_1-base
   tokenizer: ${oc.env:HF_MODELS_ROOT}/amino_acid_tokenizer
 
 training:

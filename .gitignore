@@ -4,8 +4,9 @@ output
 wandb
 tea_debug.log
 .vscode/settings.json
-hf_models/microsoft-BiomedNLP-PubMedBERT-base-uncased-abstract
-hf_models/models--gpt2
-hf_models/SaProt_650M_AF2
-hf_models/flan-t5-base
 image.png
+hf_models/*
+!hf_models/amino_acid_tokenizer
+!hf_models/structure_tokenizer
+datasets_mini
+*png

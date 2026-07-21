@@ -4,9 +4,8 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 HF_MODEL_ALIASES = {
-    "flan-t5-base": "google/flan-t5-base",
+    "t5-v1_1-base": "google/t5-v1_1-base",
     "gpt2": "gpt2",
-    "microsoft-BiomedNLP-PubMedBERT-base-uncased-abstract": "microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract",
     "SaProt_650M_AF2": "westlake-repl/SaProt_650M_AF2",
 }
 
